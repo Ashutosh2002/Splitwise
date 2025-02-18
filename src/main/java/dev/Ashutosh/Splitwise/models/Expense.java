@@ -1,6 +1,7 @@
 package dev.Ashutosh.Splitwise.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class Expense extends BaseModel{
     @ManyToOne
     private Group group;
     @OneToMany
+    @JoinColumn(name = "expense_id")
     private List<PayoutLedger> payoutLedgers;
 
 }
