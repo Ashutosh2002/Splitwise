@@ -1,6 +1,8 @@
 package dev.Ashutosh.Splitwise.services;
 
 import dev.Ashutosh.Splitwise.dto.GroupCreationReqDTO;
+import dev.Ashutosh.Splitwise.exceptions.GroupNotFoundException;
+import dev.Ashutosh.Splitwise.exceptions.UserNotFoundException;
 import dev.Ashutosh.Splitwise.models.Group;
 import dev.Ashutosh.Splitwise.models.User;
 import dev.Ashutosh.Splitwise.repository.GroupRepository;
@@ -28,8 +30,12 @@ public class GroupService {
         group.setUsers(users);
 
         return groupRepository.save(group);
+    }
 
-
+    public Group getGroupById(Integer id){
+        return groupRepository.findById(id).orElseThrow(
+                () -> new GroupNotFoundException("Group with id " + id + " not found")
+        );
     }
 
 }
