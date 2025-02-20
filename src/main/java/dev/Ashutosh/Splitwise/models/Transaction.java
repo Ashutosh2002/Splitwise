@@ -19,4 +19,27 @@ public class Transaction extends BaseModel{
     @ManyToOne
     private Group group;
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public List<User> getParties() {
+        return parties;
+    }
+
+    public void setParties(List<User> parties) {
+        this.parties = parties;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 }

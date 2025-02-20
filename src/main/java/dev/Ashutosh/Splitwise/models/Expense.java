@@ -23,6 +23,37 @@ public class Expense extends BaseModel{
     @JoinColumn(name = "expense_id")
     private List<PayoutLedger> payoutLedgers;
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public List<PayoutLedger> getPayoutLedgers() {
+        return payoutLedgers;
+    }
+
+    public void setPayoutLedgers(List<PayoutLedger> payoutLedgers) {
+        this.payoutLedgers = payoutLedgers;
+    }
 }
 
 /*

@@ -8,10 +8,12 @@ import dev.Ashutosh.Splitwise.models.User;
 import dev.Ashutosh.Splitwise.repository.GroupRepository;
 import dev.Ashutosh.Splitwise.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class GroupService {
 
     @Autowired

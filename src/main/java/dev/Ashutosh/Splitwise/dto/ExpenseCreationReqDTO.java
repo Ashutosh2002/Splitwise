@@ -1,22 +1,52 @@
 package dev.Ashutosh.Splitwise.dto;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
 import java.util.List;
 
-@Getter
 @Setter
+@Getter
 public class ExpenseCreationReqDTO {
 
     private double amount;
     private String description;
     private Integer groupId;
-    private List<Integer> paidBy;
-    private List<Double> paidByAmounts;
-    private List<Integer> owedBy;
-    private List<Double>  owedByAmounts;
+    private List<PayoutDTO> payoutDTOS;
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public List<PayoutDTO> getPayoutDTOS() {
+        return payoutDTOS;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
+
+    public void setPayoutDTOS(List<PayoutDTO> payoutDTOS) {
+        this.payoutDTOS = payoutDTOS;
+    }
 }
 
 /*
