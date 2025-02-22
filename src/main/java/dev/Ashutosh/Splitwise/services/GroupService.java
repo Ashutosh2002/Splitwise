@@ -40,4 +40,8 @@ public class GroupService {
         );
     }
 
+    public void settleGroup(int groupId){
+
+    }
+
 }
