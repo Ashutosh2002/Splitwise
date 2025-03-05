@@ -3,10 +3,14 @@ package dev.Ashutosh.Splitwise.services;
 import dev.Ashutosh.Splitwise.dto.GroupCreationReqDTO;
 import dev.Ashutosh.Splitwise.exceptions.GroupNotFoundException;
 import dev.Ashutosh.Splitwise.exceptions.UserNotFoundException;
+import dev.Ashutosh.Splitwise.models.Expense;
 import dev.Ashutosh.Splitwise.models.Group;
+import dev.Ashutosh.Splitwise.models.Transaction;
 import dev.Ashutosh.Splitwise.models.User;
 import dev.Ashutosh.Splitwise.repository.GroupRepository;
 import dev.Ashutosh.Splitwise.repository.UserRepository;
+import dev.Ashutosh.Splitwise.services.strategy.MaxMinSettleUpStrategy;
+import dev.Ashutosh.Splitwise.services.strategy.SettleUpStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +44,13 @@ public class GroupService {
         );
     }
 
-    public void settleGroup(int groupId){
-
+    public String settleGroup(int groupId){
+        SettleUpStrategy settleUpStrategy = new MaxMinSettleUpStrategy();
+        Group group = getGroupById(groupId);
+        List<Expense> expenses = group.getExpenses();
+        List<Transaction> transactions = settleUpStrategy.settleUp(group);
+//        System.out.println(transactions);
+        return transactions.toString();
     }
 
 }

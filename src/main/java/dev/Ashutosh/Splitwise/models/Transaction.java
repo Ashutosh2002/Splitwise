@@ -13,6 +13,16 @@ import java.util.List;
 @Entity
 public class Transaction extends BaseModel{
 
+    public Transaction(){
+
+    }
+
+    public Transaction(double amount, List<User> parties, Group group) {
+        this.amount = amount;
+        this.parties = parties;
+        this.group = group;
+    }
+
     private double amount;
     @ManyToMany
     private List<User> parties;// [0-borrower]  [1-lendor] parties[0] will pay parties[1] amount
@@ -41,5 +51,11 @@ public class Transaction extends BaseModel{
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        String str = "Paid amount : " + amount + " by : " + parties.get(0).getUsername() + " to : " + parties.get(1).getUsername();
+        return str;
     }
 }
